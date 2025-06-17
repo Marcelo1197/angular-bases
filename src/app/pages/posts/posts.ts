@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Data } from '../../services/data';
 
 @Component({
   selector: 'app-posts',
@@ -8,4 +9,16 @@ import { Component } from '@angular/core';
 })
 export class PostsComponent {
 
+  posts: any;
+
+  constructor(private dataService: Data ) {}
+
+  ngOnInit() {
+    // console.log('PostsComponent initialized');
+    this.posts = this.dataService.getPosts();
+  }
+
+  onPostClickedHandler(postId: number){
+    console.log('Post clicked with ID:', postId);
+  }
 }
